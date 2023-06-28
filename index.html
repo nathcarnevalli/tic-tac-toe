@@ -4,12 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Toe</title>
+  <link rel="icon" type="image/x-icon" href="/src/images/icon-game.svg">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header></header>
-  <main></main>
-  <footer></footer>
+<body class="font-mono w-full h-full bg-blue-400">
+  <header class="p-9 mb-5 max-w-full flex justify-center items-center gap-x-4">
+    <img src="./src/images/game.svg" alt="joystick">
+    <h1 class=" text-7xl font-extrabold uppercase text-yellow-500 tracking-tighter">Tic Tac Toe</h1>
+  </header>
+  <main class="max-w-full py-10">
+    
+    <div class="fixed w-full h-full top-0 right-0 bottom-0 left-0 bg-slate-700 opacity-50 z-0 hidden" id="overlay"></div>
+    <div class="flex flex-col gap-10 hidden">
+      <div class="text-center bg-blue-800 outline outline-4 outline-blue-900 rounded-lg w-1/3 m-auto z-30">   
+        <p class="text-center text-5xl font-extrabold text-yellow-400 uppercase z-40">Player name has won the game!</p>
+      </div>
+      <div class="flex justify-center gap-x-6">
+        <button class="bg-yellow-400 p-5 rounded-lg outline outline-4 outline-blue-600  font-extrabold text-3xl text-blue-600 hover:text-blue-800 hover:bg-yellow-500 hover:outline-blue-700 w-72 z-40">Restart Game</button>
+        <button class="bg-yellow-400 p-5 rounded-lg outline outline-4 outline-blue-600  font-extrabold text-3xl text-blue-600 hover:text-blue-800 hover:bg-yellow-500 hover:outline-blue-700 w-72 z-40">End Game</button>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="bg-yellow-400 p-5 rounded-lg outline outline-4 outline-blue-600  font-extrabold text-3xl text-blue-600 hover:text-blue-800 hover:bg-yellow-500 hover:outline-blue-700 w-72">Start Game</button>
+    </div>
+    <div class="bg-blue-800 w-1/5 m-auto py-10 outline outline-4 outline-blue-900 rounded-lg flex justify-center hidden">
+      <form>
+        <div class="flex flex-col justify-center items-center gap-4 pb-8">
+          <h2 class="self-start text-3xl font-extrabold text-yellow-500 uppercase pb-2">Who is playing?</h2>
+          <label for="p1" class="self-start text-2xl font-extrabold text-yellow-500 uppercase">Player 1:</label>
+          <input type="text" id="p1" class="w-72 py-2 px-2 border-transparent outline-none focus:outline-4 focus:outline-yellow-500 rounded-md transition-colors">
+          <label for="p2" class="self-start text-2xl font-extrabold text-yellow-500 uppercase">Player 2:</label>
+          <input type="text" id="p2" class="w-72 py-2 px-2 border-transparent outline-none focus:outline-4 focus:outline-yellow-500 rounded-md transition-colors">
+        </div>
+        <button class="bg-yellow-400 p-5 rounded-lg outline outline-4 outline-blue-600  font-extrabold text-3xl text-blue-600 hover:text-blue-800 hover:bg-yellow-500 hover:outline-blue-700 w-72">Play!</button>
+      </form>
+    </div>
+    <div class="flex justify-center gap-40 hidden">
+      <div class="text-center bg-blue-800 h-1/2 p-10 outline outline-4 outline-blue-900 rounded-lg">
+        <p class="text-5xl font-extrabold text-yellow-500 uppercase pb-4" id="p1Name">Player's Name</p>
+        <p class="text-5xl font-extrabold text-yellow-500 uppercase" id="p1Score">0</p>
+      </div>
+      <div class="w-96 h-96 grid grid-rows-3 grid-cols-3 gap-3 bg-black" id="gameBoard">
+        <div class="bg-blue-400 hover:bg-blue-500"></div> 
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+        <div class="bg-blue-400 hover:bg-blue-500"></div>
+      </div>
+      <div class="text-center bg-blue-800 h-1/2 p-10 outline outline-4 outline-blue-900 rounded-lg">
+        <p class="text-5xl font-extrabold text-yellow-500 uppercase pb-4" id="p2Name">Player's Name</p>
+        <p class="text-5xl font-extrabold text-yellow-500 uppercase" id="p2Score">0</p>
+      </div>
+    </div>
+  </main>
+  <footer class="fixed bottom-0 left-0 p-4 w-full outline outline-4 outline-blue-700 text-blue-700 z-10">
+    <a href="https://github.com/nathcarnevalli?tab=repositories"><h3  class="text-center font-extrabold text-3xl">Copyright © nathcarnevalli 2023</h3></a>
+  </footer>
   <script src="./src/js/game.js"></script>
 </body>
 </html>
