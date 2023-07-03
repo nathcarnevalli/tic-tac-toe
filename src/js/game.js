@@ -72,9 +72,9 @@ const endGame = winner => {
   show(overlay.nextElementSibling)
 
   if (winner !== 'Tie') {
-    winnerOrNot.innerText = `${winner.toUpperCase()} has won the game`
+    winnerOrNot.innerText = `${winner.toUpperCase()} has won the game :D`
   } else {
-    winnerOrNot.innerText = `${winner.toUpperCase()}`
+    winnerOrNot.innerText = `${winner.toUpperCase()} :(`
   }
 }
 
