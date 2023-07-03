@@ -68,7 +68,32 @@ const checkWinner = rounds => {
 }
 
 const endGame = winner => {
-  console.log(winner)
+  show(overlay)
+  show(overlay.nextElementSibling)
+
+  if (winner !== 'Tie') {
+    winnerOrNot.innerText = `${winner.toUpperCase()} has won the game`
+  } else {
+    winnerOrNot.innerText = `${winner.toUpperCase()}`
+  }
+}
+
+const newGame = () => {
+  location.reload()
+}
+
+const restart = () => {
+  hide(overlay)
+  hide(overlay.nextElementSibling)
+  playerOne.isPlaying = true
+  playerTwo.isPlaying = false
+  playerOne.round = []
+  playerTwo.round = []
+  playerOne.isWinner = false
+  playerTwo.isWinner = false
+  for (let child of gameBoard.children) {
+    child.style.backgroundImage = ''
+  }
 }
 
 gameBoard.addEventListener('click', event => {
@@ -87,6 +112,8 @@ gameBoard.addEventListener('click', event => {
       if (checkWinner(playerOne.round)) {
         endGame(playerOne.name)
         playerOne.count += 1
+        console.log(playerOne.count)
+        p1Score.textContent = playerOne.count
       }
     } else {
       playerOne.isPlaying = true
@@ -97,14 +124,19 @@ gameBoard.addEventListener('click', event => {
       playerTwo.round.push(Number(event.target.id))
       playerTwo.isWinner = checkWinner(playerTwo.round)
 
-      if (checkWinner(playerOne.round)) {
+      if (checkWinner(playerTwo.round)) {
         endGame(playerTwo.name)
         playerTwo.count += 1
+        console.log(playerTwo.count)
+        p2Score.textContent = playerTwo.count
       }
     }
   }
 
-  if (playerOne.round.length > 5 || playerTwo.round.length > 4) {
+  if (
+    playerOne.round.length === 5 &&
+    (!playerOne.isWinner || !playerTwo.isWinner)
+  ) {
     endGame('Tie')
   }
 })
